@@ -4,6 +4,8 @@ const express = require("express");
 
 const PORT = process.env.PORT || 3001;
 const app = new express();
+// use the express-static middleware
+app.use(express.static("public"))
 
 app.get('/', function (req, res) {
     var randomnumber = Math.floor((Math.random() * 9));
