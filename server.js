@@ -9,7 +9,7 @@ app.use(express.static("public"))
 
 app.get('/', function (req, res) {
     var randomnumber = Math.floor((Math.random() * 9));
-    res.send(randomnumber);
+    res.status(200).send(randomnumber.toString());
 })
 
 app.listen(PORT, () => {
