@@ -1,0 +1,27 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "This application pulls bible quotes randomly from the database and returns and object that includes a single bible quote",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edidiongaligbe/bible-quotes.git"
+  },
+  "keywords": [
+    "bible",
+    "quotes"
+  ],
+  "author": "Edidiong Aligbe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edidiongaligbe/bible-quotes/issues"
+  },
+  "homepage": "https://github.com/edidiongaligbe/bible-quotes#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mysql2": "^2.3.3"
+  }
+}
