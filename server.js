@@ -1,15 +1,36 @@
-/* mysql://bcfbe65ef7255b:4237835d@eu-cdbr-west-02.cleardb.net/heroku_28aae2d6b358980?reconnect=true */
+
+require('dotenv').config();
 const mysql = require('mysql2');
 const express = require("express");
-
+const cors = require('cors');
 const PORT = process.env.PORT || 3001;
 const app = new express();
-// use the express-static middleware
-app.use(express.static("public"))
+
+
+app.use(express.json());
+app.use(express.urlencoded());
+var corsOptions = {
+  origin: '*'
+};
+app.use(cors(corsOptions));
+
+const conn = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PWD,
+    database: process.env.DB
+  });
 
 app.get('/', function (req, res) {
-    var randomnumber = Math.floor((Math.random() * 9));
-    res.status(200).send(randomnumber.toString());
+    var randNo = Math.floor((Math.random() * 9));
+    var query = `SELECT * FROM bible_quotes WHERE id ${randNo}`;
+    conn.query(query).then((result) => {
+        res.status(200).send(JSON.stringify(result));
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).send("Internal server error");
+    });
+    
 })
 
 app.listen(PORT, () => {
